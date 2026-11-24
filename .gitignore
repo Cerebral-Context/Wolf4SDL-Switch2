@@ -76,3 +76,5 @@ settings.json
 *.key
 
 /switch2-test/release-build/
+
+/switch2-test/gpl-build/

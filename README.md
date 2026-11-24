@@ -18,6 +18,7 @@ v1.0 Experimental
 - Music and sound effects
 - Corrected enemy voice playback
 - Triple-buffered audio backend
+- DOSBox OPL audio emulation
 - Saving and loading
 - Reproducible build script
 
@@ -36,6 +37,8 @@ been reworked to address these issues.
 - Corrected high-pitched and accelerated enemy voices.
 - Added proper mono-to-stereo PCM conversion.
 - Improved music and sound effect playback.
+- Replaced MAME OPL with the GPL-licensed DOSBox OPL emulator.
+- Clearer audio and smoother screen fade transitions observed during testing.
 
 These improvements have been tested on real Nintendo Switch 2
 hardware. The original Nintendo Switch has not been tested
@@ -82,9 +85,9 @@ Additional controller mappings will be documented.
 
 ## Known Issues
 
-- Menu music may occasionally stop after returning from HOME.
-- Changing audio settings may cause a freeze.
-- Occasional gameplay slowdown.
+- Menu music stopping after returning from HOME was observed in earlier builds.
+- Changing audio settings caused freezes in earlier builds.
+- These two issues have not yet been retested with DOSBox OPL.
 
 This is an experimental release. Further improvements are planned.
 
@@ -106,7 +109,7 @@ sudo docker run --rm \
 The resulting executable is located at:
 
 ```
-switch2-test/release-build/Wolf3d.nro
+switch2-test/gpl-build/Wolf3d.nro
 ```
 
 ## Credits
@@ -133,8 +136,12 @@ This project retains the original Wolf4SDL licensing terms.
 - MAME OPL emulator: see license-mame.txt.
 - DOSBox OPL emulator: GPL alternative.
 
-The current Switch 2 build uses the MAME OPL emulator,
-which carries non-commercial redistribution restrictions.
+The current Switch 2 build enables USE_GPL and uses the
+DOSBox OPL emulator instead of MAME OPL.
+The MAME emulator is not compiled into this build.
+
+The engine and DOSBox OPL are used under their GPL terms.
+Other components remain subject to their applicable licenses.
 
 Original commercial game data is not distributed.
 

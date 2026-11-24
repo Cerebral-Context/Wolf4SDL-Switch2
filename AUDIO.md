@@ -176,6 +176,37 @@ be useful for the original Nintendo Switch port.
 However, these changes have not been adapted to or
 tested on original Nintendo Switch hardware.
 
+## 7. DOSBox OPL Emulator
+
+The Switch 2 release candidate now uses the DOSBox OPL
+emulator instead of the MAME OPL emulator.
+
+This is enabled through USE_GPL in game-src/version.h.
+The build script compiles DOSBox OPL and excludes MAME OPL.
+
+All previous audio buffering and PCM conversion
+improvements remain in place.
+
+During testing on real Nintendo Switch 2 hardware,
+the DOSBox build was observed to provide:
+
+- Clearer music and sound effects.
+- Smoother screen fade transitions.
+- Correct enemy voice playback.
+- No noticeable audio popping or crackling.
+- Working saving and loading.
+- Working HOME resume during gameplay.
+- Working sleep and wake functionality.
+
+These are qualitative hardware observations rather than
+measured performance benchmarks.
+
+Menu music after returning from HOME and changing audio
+settings remain unconfirmed with the DOSBox build.
+
+The DOSBox configuration may also be worth investigating
+on the original Nintendo Switch port.
+
 ## Credits
 
 - id Software

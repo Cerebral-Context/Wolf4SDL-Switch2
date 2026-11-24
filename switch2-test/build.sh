@@ -8,7 +8,7 @@ CC="$DEVKITPRO/devkitA64/bin/aarch64-none-elf-gcc"
 CXX="$DEVKITPRO/devkitA64/bin/aarch64-none-elf-g++"
 ELF2NRO="$DEVKITPRO/tools/bin/elf2nro"
 
-BUILD="release-build"
+BUILD="gpl-build"
 
 mkdir -p "$BUILD/compat"
 
@@ -50,8 +50,7 @@ OBJECTS+=("$BUILD/wolf_video.o")
 echo "=== Compiling Wolf4SDL engine ==="
 
 for source in game-src/*.cpp \
-              game-src/dosbox/dbopl.cpp \
-              game-src/mame/fmopl.cpp; do
+              game-src/dosbox/dbopl.cpp; do
 
     object="$BUILD/$(basename "${source%.cpp}").o"
 
