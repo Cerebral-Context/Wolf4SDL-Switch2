@@ -41,3 +41,38 @@ Thumbs.db
 *.layout
 *.depend
 settings.json
+# Nintendo Switch 2 build artifacts
+*.nro
+*.elf
+*.nacp
+*.o
+*.log
+
+# Development builds and backups
+/backups/
+/switch2-test/backups/
+/switch2-test/fullbuild*/
+/switch2-test/title-test/
+/switch2-test/combined-build/
+*.backup
+*.before-*
+*.pre-diagnostic
+*-backup.c
+*.audio-backup
+*.debug-backup
+
+# Proprietary game data
+*.[Ww][Ll][1-6]
+*.[Ss][Oo][Dd]
+*.[Ss][Dd][1-3]
+
+# Save files and configuration
+*.sav
+*.cfg
+
+# Private keys
+*.keys
+*.pem
+*.key
+
+/switch2-test/release-build/

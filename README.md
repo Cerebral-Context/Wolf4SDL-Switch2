@@ -1,79 +1,141 @@
+# Wolf4SDL-Switch2
 
-# Wolf4SDL-Switch
+A native Nintendo Switch 2 homebrew port of Wolfenstein 3D,
+based on Wolf4SDL and Keeganator's original Nintendo Switch port.
 
-Port of Wolfenstein 3D to Nintendo Switch using Wolf4SDL as a base.
+This port uses libounce and a custom SDL compatibility layer
+adapted for Nintendo Switch 2.
 
-Sound currently has issues which causes popping and crackling.
+## Current Release
 
-## Screenshots
+v1.0 Experimental
 
-![Screenshot1](https://github.com/KeeganatorP/Wolf4SDL-Switch/blob/master/screen1.jpg)
-![Screenshot2](https://github.com/KeeganatorP/Wolf4SDL-Switch/blob/master/screen2.jpg)
-![Screenshot3](https://github.com/KeeganatorP/Wolf4SDL-Switch/blob/master/screen3.jpg)
+## Features
+
+- Native Nintendo Switch 2 support
+- Dual analogue stick controls
+- Working title screen and palette transitions
+- Music and sound effects
+- Corrected enemy voice playback
+- Triple-buffered audio backend
+- Saving and loading
+- Reproducible build script
+
+## Audio Improvements
+
+Technical details: [AUDIO.md](AUDIO.md)
+
+The original Nintendo Switch port had known issues with
+audio popping and crackling.
+
+For the Nintendo Switch 2 port, the audio backend has
+been reworked to address these issues.
+
+- Implemented triple-buffered audio playback.
+- Fixed audio popping and crackling during tested gameplay.
+- Corrected high-pitched and accelerated enemy voices.
+- Added proper mono-to-stereo PCM conversion.
+- Improved music and sound effect playback.
+
+These improvements have been tested on real Nintendo Switch 2
+hardware. The original Nintendo Switch has not been tested
+with these changes.
+
+## Installation
+
+A homebrew-capable Nintendo Switch 2 is required.
+
+You must own a compatible copy of Wolfenstein 3D.
+
+Supported game data:
+Wolf3D Full v1.4 GT/ID/Activision.
+
+Create the following directory structure on your SD card:
+
+```
+switch/
+  Wolf3d.nro
+  wolf4sdl/
+    wolf3d/
+      audiohed.wl6
+      audiot.wl6
+      gamemaps.wl6
+      maphead.wl6
+      vgadict.wl6
+      vgagraph.wl6
+      vgahead.wl6
+      vswap.wl6
+```
+
+Launch Wolf3d.nro through the Homebrew Menu.
+
+Original commercial game data is not included.
 
 ## Controls
 
-| Keys        | Controls           |
-| :-------------: |:-------------:|
-| D-Pad Up | Forward |
-| D-Pad Down | Back |
-| D-Pad Left | Turn Left |
-| D-Pad Right | Turn Right |
-| Minus | Return to Menu/ESC |
-| Plus | Pause |
-| A / ZR | Fire/OK |
-| B | Open |
-| X | Strafe/Turn |
-| Y / ZL | Run |
-| L | Previous Weapon |
-| R | Next Weapon |
+| Input | Action |
+| --- | --- |
+| Left analogue stick | Movement |
+| Right analogue stick | Turning |
 
-## Compiling
+Additional controller mappings will be documented.
 
-### Prerequisites
+## Known Issues
 
-Requires SDL-1.2.15 for switch
+- Menu music may occasionally stop after returning from HOME.
+- Changing audio settings may cause a freeze.
+- Occasional gameplay slowdown.
 
-```
-https://github.com/KeeganatorP/SDL-SWITCH
-```
+This is an experimental release. Further improvements are planned.
 
-Requires a copy of Wolfenstein 3D 
+## Building from Source
 
-```
-Wolf3d Full v1.4 GT/ID/Activision
-```
+The Switch 2 port requires a compatible devkitA64 and libounce
+development environment.
 
-### Building
+Using a locally configured ounce-devkit Docker image:
 
-Run make
-
-```
-make -j8
+```bash
+sudo docker run --rm \
+  -v "$PWD:/workspace" \
+  -w /workspace \
+  ounce-devkit:latest \
+  bash switch2-test/build.sh
 ```
 
-Copy
+The resulting executable is located at:
 
 ```
-Wolf4SDL.nro
-```
-and
-```
-wolf3d/audiohed.wl6
-wolf3d/audiot.wl6
-wolf3d/config.wl6
-wolf3d/gamemaps.wl6
-wolf3d/maphead.wl6
-wolf3d/savegam0.wl6
-wolf3d/vgadict.wl6
-wolf3d/vgagraph.wl6
-wolf3d/vgahead.wl6
-wolf3d/vswap.wl6
+switch2-test/release-build/Wolf3d.nro
 ```
 
-To `/switch/wolf4sdl/` on SD Card
+## Credits
 
-## Special Thanks
+- id Software - Original Wolfenstein 3D
+- Wolf4SDL developers and contributors
+- Keeganator - Original Nintendo Switch port
+- devkitPro - Development toolchain
+- libounce developers and contributors
+- DOSBox and MAME contributors
+- Cerebral-Context - Nintendo Switch 2 port
 
-* devkitpro
-* All contributers to Wolf4SDL
+Original Nintendo Switch repository:
+https://github.com/keeganatorr/Wolf4SDL-Switch
+
+The original Nintendo Switch README is preserved in
+README-Switch1.md.
+
+## Licensing
+
+This project retains the original Wolf4SDL licensing terms.
+
+- Wolfenstein 3D engine: see license-id.txt and license-gpl.txt.
+- MAME OPL emulator: see license-mame.txt.
+- DOSBox OPL emulator: GPL alternative.
+
+The current Switch 2 build uses the MAME OPL emulator,
+which carries non-commercial redistribution restrictions.
+
+Original commercial game data is not distributed.
+
+See readme-wolf.txt for the upstream licensing declaration.
