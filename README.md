@@ -143,6 +143,12 @@ The MAME emulator is not compiled into this build.
 The engine and DOSBox OPL are used under their GPL terms.
 Other components remain subject to their applicable licenses.
 
+Dependency license notices:
+
+- [libnx - ISC](licenses/libnx-ISC.txt)
+- [libounce - ISC](licenses/libounce-ISC.txt)
+- [mimalloc - MIT](licenses/mimalloc-MIT.txt)
+
 Original commercial game data is not distributed.
 
 See readme-wolf.txt for the upstream licensing declaration.
